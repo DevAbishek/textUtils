@@ -20,12 +20,8 @@ export default function TextForm(props) {
         setText(event.target.value)
     }
 
-    let wordCount = text.split(" ").length
+    let wordCount = text.split(" ").filter((element)=> {return element.length !== 0}).length
     let charCount = text.length
-
-    if (wordCount === 1 && charCount === 0) {
-        wordCount = 0
-    }
 
     return (
         <>
@@ -34,8 +30,8 @@ export default function TextForm(props) {
                 <div className="mb-3">
                     <textarea className="form-control" style={{backgroundColor: props.mode === 'dark' ? 'black' : 'white', color: props.mode === 'dark' ? 'white' : '#042743'}} value={text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
                 </div>
-                <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to Uppercase</button>
-                <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to Lowercase</button>
+                <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
+                <button className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to Lowercase</button>
             </div>
             <div className="container my-3" style={{color: props.mode === 'dark' ? 'white' : '#042743'}}>
                 <h2>Your text summary</h2>
